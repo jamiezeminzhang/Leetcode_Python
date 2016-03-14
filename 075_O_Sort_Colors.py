@@ -23,6 +23,10 @@ array with total number of 0's, then 1's and followed by 2's.
 
 Could you come up with an one-pass algorithm using only constant space?
 
+1.	用left， right两个指针。如果nums[i]为0，与left交换,left+=1,i+=1
+2.	如果nums[i]为2，与right交换，right-=1。这时候不动i，因为此时的nums[i]是刚交换过来的新数字，需要判断颜色。
+3.	如果nums[i]为1，i++。
+
 
 @author: zeminzhang
 """
@@ -36,22 +40,14 @@ class Solution(object):
         left, right = 0, len(nums)-1
         i = 0
         while i<right+1:
-            if nums[i] == 0:
-                tmp = nums[left]
-                nums[left] = nums[i]
-                nums[i] = tmp
+            if nums[i] == 0: # swap with left
+                nums[i], nums[left] = nums[left], nums[i]
                 left += 1
-                i += 1
-                continue
-            if nums[i] == 2:
-                tmp = nums[right]
-                nums[right] = nums[i]
-                nums[i] = tmp
-                right -= 1
-                continue
-            i +=1
-        
-#        return nums
+                i+=1
+            elif nums[i] == 2:
+                nums[i], nums[right] = nums[right], nums[i]
+                right-=1
+            else: i+=1
 
 #sol = Solution()
 #print sol.sortColors([0,1,0,2,1,1,0,2,2])

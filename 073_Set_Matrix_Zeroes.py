@@ -12,6 +12,27 @@ A straight forward solution using O(mn) space is probably a bad idea.
 A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 
+
+**** Constant space solution *******
+class Solution(object):
+    def setZeroes(self, matrix):
+
+        m, n, first_row_has_zero = len(matrix), len(matrix[0]), not all(matrix[0])
+        for i in range(1,m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    matrix[i][0]=0
+                    matrix[0][j]=0
+                    
+        for i in range(1,m):
+            for j in range(n-1,-1,-1):
+                # 这里希望最后再算第一列。如果0,0是0，那么希望第一列最后也变成0.
+                if matrix[i][0]==0 or matrix[0][j]==0:
+                    matrix[i][j] = 0
+        
+        if first_row_has_zero:
+            matrix[0] = [0]*n
+			
 @author: zeminzhang
 """
 

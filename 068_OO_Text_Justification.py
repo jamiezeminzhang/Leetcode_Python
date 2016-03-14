@@ -27,6 +27,31 @@ Return the formatted lines as:
    "justification.  "
 ]
 
+*** A better solution ***
+直接法：
+1.每次向cur里面放word，并且更新总词长num_of_letters。 直到总长度>maxWidth。然后判断cur中词的个数。
+2.如果只有一个词，那么靠左，右边加上适当空格
+3.如果有多个词，那么用divmod算出词距。多的词距加到cur[i]的结尾。
+如果总长度大于>maxWidth，以上两步结束之后，重置cur和num_of_letters。
+***
+def fullJustify(self, words, maxWidth):
+    res, cur, num_of_letters = [], [], 0
+    for w in words:
+        if num_of_letters + len(w) + len(cur) > maxWidth:
+            if len(cur) == 1:
+                res.append( cur[0] + ' '*(maxWidth - num_of_letters) )
+            else:
+                num_spaces = maxWidth - num_of_letters - len(cur) + 1
+                space_between_words, num_extra_spaces = divmod( num_spaces, len(cur)-1)
+                for i in range(num_extra_spaces):
+                    cur[i] += ' '
+                res.append( (' '*(1+space_between_words)).join(cur) )
+            cur, num_of_letters = [], 0
+        cur += [w]
+        num_of_letters += len(w)
+    res.append( ' '.join(cur) + ' '*(maxWidth - num_of_letters - len(cur) + 1) )
+    return res
+	
 @author: zeminzhang
 """
 

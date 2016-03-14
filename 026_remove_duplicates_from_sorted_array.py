@@ -28,26 +28,28 @@ class Solution:
                 A[i], A[j+1] = A[j+1], A[i]
                 j = j + 1
         return j+1
-        
+
+		
 
 @author: zzhang
 """
 
-class Solution:
-    # @param {integer[]} nums
-    # @return {integer}
+class Solution(object):
     def removeDuplicates(self, nums):
-        if len(nums) == 0:
-            return 0
-        if len(nums) == 1:
-            return nums
-        count = 0
-        val = nums[0]-1
-        for i in nums:
-            if i != val:
-                count +=1
-                val = i
-        return count
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) <=1: return len(nums)
+        
+        left = 0
+        for i in range(1,len(nums)):
+            if nums[left] == nums[i]:
+                continue
+            else:
+                left += 1
+                nums[left] = nums[i]
+        return left+1
 
 sol = Solution()
 print sol.removeDuplicates([1,1,2,3,4,4,5])

@@ -28,29 +28,24 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        m,n = len(matrix), len(matrix[0])
-        if m==0 or n == 0: return False
-        if target < matrix[0][0]: return False
-        if target > matrix[m-1][n-1]: return False
+        m, n = len(matrix), len(matrix[0])
+        if m==0 or n==0: return False
+        if target<matrix[0][0] or target>matrix[-1][-1]: return False
         
-        row = -1
-        for i in range(m-1):
-            if matrix[i][0] <= target and target < matrix[i+1][0]:
-                row = i
-                break
-        if row == -1: row = m-1
-        
-        lis = matrix[row]
-        length = len(lis)
-        left = 0
-        right = length-1
-        mid = (left+right)/2
-        while left <= right:
-            if lis[mid] == target: return True
-            elif lis[mid]> target:
-                right = mid-1
-                mid = (left+right)/2
-            elif lis[mid] < target:
-                left = mid+1
-                mid = (left+right)/2
+        up, down = 0, m-1
+        while up<=down:
+            center = (up+down)/2
+            if matrix[center][0] == target: return True
+            elif matrix[center][0]<target:
+                up = center + 1
+            else: down = center-1
+
+        left, right = 0, n-1
+        while left<=right:
+            mid = (left+right)/2
+            if matrix[down][mid] == target: return True
+            elif matrix[down][mid]<target:
+                left = mid +1
+            else: right = mid-1
         return False
+        

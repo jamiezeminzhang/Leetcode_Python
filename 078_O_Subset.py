@@ -39,8 +39,8 @@ class Solution:
         res = []
         dfs(0, 0, [])
         return res
-        
-我的方法是直接写出答案。。。因为dfs没写出来
+		
+下面的答案给的是直接法
 @author: zeminzhang
 """
 
@@ -51,11 +51,8 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = [[]]
-        for i in nums:
-            res = [x + [i] for x in res ] + res
-        
-        for i in res:
-            i.sort()
+        for num in sorted(nums):
+            res += [item+[num] for item in res]
         return res
         
 sol = Solution()
