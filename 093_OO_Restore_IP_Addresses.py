@@ -13,7 +13,21 @@ Given "25525511135",
 return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
 
 解题思路：这个明显是用dfs来解决。来一段精致简练的代码吧。
-
+class Solution(object):
+    def restoreIpAddresses(self, s):
+        def dfs(s, sub, ip):
+            if sub == 4:
+                if s=='':
+                    res.append(ip[1:])
+                return
+            for i in range(1,4):
+                if i<=len(s):
+                    if str(int(s[:i])) == s[:i] and int(s[:i]) <= 255:
+                        dfs(s[i:],sub+1, ip+'.'+s[:i])
+        res = []
+        dfs(s,0,'')
+        return res
+		
 @author: zeminzhang
 """
 
@@ -28,9 +42,8 @@ class Solution:
                 return
             for i in range(1, 4):                               # the three ifs' order cannot be changed!
                 if i <= len(s):                                 # if i > len(s), s[:i] will make false!!!!
-                    if int(s[:i]) <= 255:
+                    if str(int(s[:i])) == s[:i] and int(s[:i]) <= 255: # to avoid the case such like 003.xxx 
                         dfs(s[i:], sub+1, ips, ip+'.'+s[:i])
-                    if s[0] == '0': break                       # make sure that res just can be '0.0.0.0' and remove like '00'
         ips = []
         dfs(s, 0, ips, '')
         return ips

@@ -7,6 +7,9 @@ Total Accepted: 37534 Total Submissions: 163466 Difficulty: Hard
 Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle 
 containing all ones and return its area.
 
+可以用上题的方法做。对每一行，求出从这一行向下的连续的1的个数统计成的histogram。
+算出最大的rectangle，也就算出了以这个row为顶边的最大的rectangle的面积。所有行都算一遍就可以。
+
 @author: zeminzhang
 """
 

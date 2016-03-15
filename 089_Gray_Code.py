@@ -25,33 +25,19 @@ above definition.
 For now, the judge is able to judge based on one instance of gray code sequence. 
 Sorry about that.
 
-#### My solution
+#### My solution ###
 
 class Solution(object):
+    def grayCodeStr(self,n):
+        if n==0: return ['0']
+        if n==1: return ['0','1']
+        temp = self.grayCodeStr(n-1)
+        return ['0'+i for i in temp]+['1'+i for i in temp[::-1]]
+        
     def grayCode(self, n):
-        if n ==0 : return [0]
-        res_binary = self.grayCode_binary(n)
-        res = []
-        for i in res_binary:
-            tmp = 0
-            i = i[::-1]
-            for idx in range(n):
-                tmp += int(i[idx])*(2**idx)
-            res.append(tmp)
-        return res
-    def grayCode_binary(self, n):
-        if n == 1: return ['0','1']
-        if n == 2: return ['00','01','11','10']
-        if n>=3:
-            tmp1 = self.grayCode_binary(n-1)
-            tmp2 = list(tmp1)
-            tmp2.reverse()
-            return [i+'0' for i in tmp1] + [j + '1' for j in tmp2]
-sol = Solution()
-print sol.grayCode_binary(3)
-print sol.grayCode(3)
-            
-It is correct from my end, but can't pass the judge.
+
+        res = self.grayCodeStr(n)
+        return [int(i,2) for i in res]
 
 ###### Correct Answer 
 

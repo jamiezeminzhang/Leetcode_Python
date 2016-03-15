@@ -45,12 +45,6 @@ We say that "rgtae" is a scrambled string of "great".
 Given two strings s1 and s2 of the same length, determine if s2 is a scrambled 
 string of s1.
 
-My solution!!!!
-
-1. find the partition point first (both in order and reverse)
-2. note that there may be multiple such points, save them all
-3. dfs the partition, check the substrings divided by the partition point
-
 @author: zeminzhang
 """
 
@@ -61,70 +55,15 @@ class Solution(object):
         :type s2: str
         :rtype: bool
         """
-        length1 = len(s1)
-        length2 = len(s2)
-        if length1 != length2: return False        
-        if s1 == s2: return True
-        if length1 == 1 and length2 == 1:
-            if s1 != s2: return False
-        if length1 == 2 and length2 == 2:
-            if (s1[0] == s2[1] and s1[1] == s2[0]) or (s1 == s2):
-                return True
-            else:
-                return False
-        # first find the partition point (one way and reversed one)
-        dic1, dic2, dic3 = {}, {}, {}
-        idx1, idx2 = 0, length1-1
-        idx1_list, idx2_list = [], []
-        flag, reverse_flag = 0, 0
-        while idx1<length1:
-            if s1[idx1] in dic1:
-                dic1[s1[idx1]] += 1
-            else:
-                dic1[s1[idx1]] = 1
-            
-            if s2[idx1] in dic2:
-                dic2[s2[idx1]] += 1
-            else:
-                dic2[s2[idx1]] = 1
-            
-            if s2[idx2] in dic3:
-                dic3[s2[idx2]] += 1
-            else:
-                dic3[s2[idx2]] = 1
-            
-            if idx1 != length1-1:
-                if dic1 == dic2: 
-                    flag = 1
-                    idx1_list.append(idx1)
-                if dic1 == dic3: 
-                    reverse_flag = 1
-                    idx2_list.append(idx2)
-            idx1 += 1
-            idx2 -= 1
-        
-        if flag == 0 and reverse_flag == 0:
+        if len(s1)!=len(s2) or sorted(s1)!=sorted(s2):
             return False
-        elif flag == 1 and reverse_flag==0:
-            res = False
-            for i in idx1_list:
-                res = ( res or (self.isScramble(s1[:i+1],s2[:i+1]) and self.isScramble(s1[i+1:],s2[i+1:])) )
-            return res
-        elif reverse_flag == 1 and flag == 0:
-            res = False
-            for i in idx2_list:
-                j = length1-1-i
-                res = (res or (self.isScramble(s1[:j+1],s2[i:]) and self.isScramble(s1[j+1:],s2[:i])))
-            return res
-        elif flag == 1 and reverse_flag == 1:
-            res1 = False
-            for i in idx1_list:
-                res1 = ( res1 or (self.isScramble(s1[:i+1],s2[:i+1]) and self.isScramble(s1[i+1:],s2[i+1:])) )
-            res2 = False
-            for i in idx2_list:
-                j = length1-1-i
-                res2 = (res2 or (self.isScramble(s1[:j+1],s2[i:]) and self.isScramble(s1[j+1:],s2[:i])))
-            return (res1 or res2)
+        if len(s1)<4 or s1==s2: return True
+        f = self.isScramble
+        for i in range(1,len(s1)):
+            if f(s1[:i],s2[:i]) and f(s1[i:],s2[i:]) or \
+            f(s1[:i],s2[-i:]) and f(s1[i:],s2[:-i]):
+                return True
+        return False
             
 sol = Solution()
 print sol.isScramble('a','b')
