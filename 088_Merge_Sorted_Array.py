@@ -12,6 +12,8 @@ You may assume that nums1 has enough space (size that is greater or equal to
 m + n) to hold additional elements from nums2. The number of elements 
 initialized in nums1 and nums2 are m and n respectively.
 
+My solution:
+compare + insert + compare + insert...
 
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
@@ -24,10 +26,6 @@ class Solution(object):
                 n-=1
         if n>0:
             nums1[:n] = nums2[:n]
-			
-			
-My solution:
-compare + insert + compare + insert...
 
 @author: zeminzhang
 """

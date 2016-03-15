@@ -23,10 +23,6 @@ array with total number of 0's, then 1's and followed by 2's.
 
 Could you come up with an one-pass algorithm using only constant space?
 
-1.	用left， right两个指针。如果nums[i]为0，与left交换,left+=1,i+=1
-2.	如果nums[i]为2，与right交换，right-=1。这时候不动i，因为此时的nums[i]是刚交换过来的新数字，需要判断颜色。
-3.	如果nums[i]为1，i++。
-
 
 @author: zeminzhang
 """
