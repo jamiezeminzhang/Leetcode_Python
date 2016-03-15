@@ -12,24 +12,39 @@ Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 
 ***
-基本想法：head不动。每次将head后面的node提到dummy后面，head.next=head.next.next，直到head.next == None
+Remeber to remove the next of head! Otherwise it will be a circle.
 
 ** Recursive one **
 
 class Solution(object):
-    def reverseList(self, head):
-        return self._reverse(head, None)
-
-    def _reverse(self, node, prev):
-        if not node:
-            return prev
-        n = node.next
-        node.next = prev
-        return self._reverse(n, node)
+    def reverseList(self, head):     
+        def rev(head):
+            if not head.next:
+                return (head, head)
+            elif not head.next.next:
+                p1 = head.next
+                p1.next = head
+                head.next = None
+                return (p1,p1.next)
+            else:
+                tmp = rev(head.next)
+                tmp[1].next = head
+                head.next = None
+                return (tmp[0], head)
+        
+        if not head or not head.next: return head
+        res = rev(head)
+        return res[0]
 
 
 @author: Jamie
 """
+
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution(object):
     def reverseList(self, head):
@@ -37,17 +52,17 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head or not head.next:
-            return head
-        dummy = ListNode('s')
+        if not head or not head.next: return head
+        dummy = ListNode('#')
         dummy.next = head
-        
-        while head.next:
-            tmp = dummy.next
-            dummy.next = head.next
-            head.next = head.next.next
-            dummy.next.next = tmp
-        return dummy.next
+        p1, p2 = head.next, head
+        while p1:
+            tmp = p1.next
+            p1.next = p2
+            p2 = p1
+            p1 = tmp
+        dummy.next.next = None
+        return p2
 
 head = ListNode(1)
 head.next = ListNode(2)

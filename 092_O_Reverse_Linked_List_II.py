@@ -16,28 +16,39 @@ Given m, n satisfy the following condition:
 1 ≤ m ≤ n ≤ length of list.
 
 
-This is the online solution, which beats 41%
+# My solution only beats 0.34%...
 
-class Solution(object):
+This is the online solution, which beats 41%
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    # @param head, a ListNode
+    # @param m, an integer
+    # @param n, an integer
+    # @return a ListNode
     def reverseBetween(self, head, m, n):
-        if not head or not head.next: return head
-        dummy = ListNode('s'); dummy.next = head
-        d = dummy
-        for i in range(m-1):
-            d = d.next
-        head1 = d.next
-        for i in range(n-m):
-            temp = d.next
-            d.next = head1.next
-            head1.next = head1.next.next
-            d.next.next = temp
+        if head == None or head.next == None:
+            return head
+        dummy = ListNode(0); dummy.next = head
+        head1 = dummy
+        for i in range(m - 1):
+            head1 = head1.next
+        p = head1.next
+        for i in range(n - m):
+            tmp = head1.next
+            head1.next = p.next
+            p.next = p.next.next
+            head1.next.next = tmp
         return dummy.next
         
         
 @author: zeminzhang
 """
 
-# My solution only beats 0.34%...
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
