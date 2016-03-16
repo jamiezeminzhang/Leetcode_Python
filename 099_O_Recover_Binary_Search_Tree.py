@@ -25,43 +25,40 @@ The constant solution is given here.
 以下的解法也是中序遍历的写法，只是非常巧妙，使用了一个prev指针。例如一颗被破坏的二叉查找树如下：
 
 　　　　　　　  　4
-
-　　　　　　 　/     \
-         
-           2        6
-        
-         /   \    /   \
-   
-        1     5  3      7
+　　　　　　 　  / \
+                2   6     
+               /\   /\   
+              1  5 3  7
 
 很明显3和5颠倒了。那么在中序遍历时：当碰到第一个逆序时：为5->4，那么将n1指向5，n2指向4，
 注意，此时n1已经确定下来了。然后prev和root一直向后遍历，直到碰到第二个逆序时：4->3，
 此时将n2指向3，那么n1和n2都已经确定，只需要交换节点的值即可。prev指针用来比较中序遍历中相邻两个值的大小关系，很巧妙。 
 
-# Definition for a  binary tree node
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+How do we find these two elements? For example, we have the following tree that is printed as in order 
+traversal:
 
-class Solution:
-    # @param root, a tree node
-    # @return a tree node
-    def FindTwoNodes(self, root):
-            if root:
-                self.FindTwoNodes(root.left)
-                if self.prev and self.prev.val > root.val:
-                    self.n2 = root
-                    if self.n1 == None: self.n1 = self.prev
-                self.prev = root
-                self.FindTwoNodes(root.right)
+6, 3, 4, 5, 2
+
+We compare each node with its next one and we can find out that 6 is the first element to swap 
+because 6 > 3 and 2 is the second element to swap because 2 < 5.
+
+Really, what we are comparing is the current node and its previous node in the "in order traversal".
+
+class Solution(object):
+    def findTwoNodes(self, root):
+        if root:
+            self.findTwoNodes(root.left)
+            if self.n1==None and self.prev and self.prev.val>root.val:
+                self.n1 = self.prev
+            if self.n1!=None and self.prev.val>root.val:
+                self.n2 = root
+            self.prev = root
+            self.findTwoNodes(root.right)
     def recoverTree(self, root):
         self.n1 = self.n2 = None
         self.prev = None
-        self.FindTwoNodes(root)
+        self.findTwoNodes(root)
         self.n1.val, self.n2.val = self.n2.val, self.n1.val
-        return root
         
 @author: zeminzhang
 """

@@ -15,6 +15,16 @@ Both the left and right subtrees must also be binary search trees.
 Solution:
 print out the binary tree and check its order.
 
+*** A better solution ***
+def isValidBST(self, root, floor=float('-inf'), ceiling=float('inf')):
+    if not root: 
+        return True
+    if root.val <= floor or root.val >= ceiling:
+        return False
+    # in the left branch, root is the new ceiling; contrarily root is the new floor in right branch
+    return self.isValidBST(root.left, floor, root.val) and self.isValidBST(root.right, root.val, ceiling)
+	
+	
 @author: zeminzhang
 """
 
