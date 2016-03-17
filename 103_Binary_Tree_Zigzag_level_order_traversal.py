@@ -21,6 +21,33 @@ return its zigzag level order traversal as:
   [15,7]
 ]
 
+class Solution(object):
+    def zigzagLevelOrder(self, root):
+        if not root: return[]
+        stack = [root]
+        res = []
+        
+        while stack:
+            curr_num_nodes = len(stack)
+            curr_res = []
+            curr_lvl = len(res)
+            next_lvl_nodes = []
+            
+            while curr_num_nodes>0:
+                curr_num_nodes -= 1
+                node = stack.pop(0)
+                curr_res.append(node.val)
+                if node.left: next_lvl_nodes.append(node.left)
+                if node.right:next_lvl_nodes.append(node.right)
+                
+            if curr_lvl % 2 == 0:
+                res.append(curr_res)
+            else:
+                res.append(curr_res[::-1])
+                
+            stack = next_lvl_nodes
+        return res
+		
 @author: zeminzhang
 """
 

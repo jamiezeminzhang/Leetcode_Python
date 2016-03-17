@@ -9,6 +9,21 @@ Given two binary trees, write a function to check if they are equal or not.
 Two binary trees are considered equal if they are structurally identical and
  the nodes have the same value.
 
+Iterative solution:
+class Solution(object):
+    def isSameTree(self, p, q):
+        stack = [(p,q)]
+        while stack:
+            n1,n2 = stack.pop()
+            if n1 and n2 and n1.val == n2.val:
+                stack.append((n1.left, n2.left))
+                stack.append((n1.right, n2.right))
+            elif not n1 and not n2:
+                continue
+            else:
+                return False
+        return True
+ 
 @author: zeminzhang
 """
 

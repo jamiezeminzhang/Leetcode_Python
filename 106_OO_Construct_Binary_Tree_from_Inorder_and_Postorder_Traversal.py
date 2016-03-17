@@ -1,7 +1,31 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Feb  2 22:01:55 2016
+106. Construct Binary Tree from Inorder and Postorder Traversal
+Total Accepted: 51584 Total Submissions: 179894 Difficulty: Medium
 
+Given inorder and postorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+
+*** Iterative Solution ***
+class Solution(object):
+    def buildTree(self, inorder, postorder):
+        oi, pi = 0,0
+        stack = []
+        cur = None
+        while pi < len(postorder):
+            if len(stack) and stack[-1].val == postorder[pi]:
+                stack[-1].right = cur
+                cur = stack.pop()
+                pi += 1
+            else:
+                stack.append(TreeNode(inorder[oi]))
+                stack[-1].left = cur
+                cur = None
+                oi += 1
+        return cur
 @author: zeminzhang
 """
 

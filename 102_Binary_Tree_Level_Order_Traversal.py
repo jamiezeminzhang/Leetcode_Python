@@ -21,6 +21,29 @@ return its level order traversal as:
   [15,7]
 ]
 
+Iterative solution:
+
+class Solution(object):
+    def levelOrder(self, root):
+        if not root: return []
+        stack = [root]
+        curr_level = 0
+        res = []
+        
+        while stack:
+            cur_lvl_nodes = len(stack)
+            cur_lvl_res = []
+            next_lvl_nodes = []
+            while cur_lvl_nodes>0:
+                cur_lvl_nodes -= 1
+                node = stack.pop(0)
+                cur_lvl_res.append(node.val)
+                if node.left: next_lvl_nodes.append(node.left)
+                if node.right:next_lvl_nodes.append(node.right)
+            res.append(cur_lvl_res)
+            stack = next_lvl_nodes
+        return res
+		
 @author: zeminzhang
 """
 

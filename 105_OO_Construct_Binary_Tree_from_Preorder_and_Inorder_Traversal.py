@@ -2,21 +2,12 @@
 """
 Created on Tue Feb  2 06:56:27 2016
 
-105. Construct Binary Tree from Preorder and Inorder Traversal My Submissions Question
+105. Construct Binary Tree from Preorder and Inorder Traversal
+
 Total Accepted: 54930 Total Submissions: 198014 Difficulty: Medium
 Given preorder and inorder traversal of a tree, construct the binary tree.
 
 ################
-My solution: Memory Limit Exceeded 
-class Solution(object):
-    def buildTree(self, preorder, inorder):
-        if len(inorder) == 0 or len(preorder) == 0:
-            return None
-        root = TreeNode(preorder[0])
-        root_pos = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:root_pos+1],inorder[:root_pos])
-        root.right = self.buildTree(preorder[root_pos+1:],inorder[root_pos+1:])
-        return root
 
 Given version is the correct version of recursion one.
 https://leetcode.com/discuss/83521/python-recursion-version-iteration-version-easy-understand
@@ -62,6 +53,11 @@ class Solution(object):
     preorder = []
     inorder = []
     def buildTree(self, preorder, inorder):
+	    """
+        :type preorder: List[int]
+        :type inorder: List[int]
+        :rtype: TreeNode
+        """
         self.preorder = preorder
         self.inorder = inorder
         return self.dfs(0, len(self.preorder), 0, len(self.inorder))
