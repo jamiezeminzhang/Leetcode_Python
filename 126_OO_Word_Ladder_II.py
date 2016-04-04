@@ -51,14 +51,12 @@ class Solution:
                     for i in xrange(len(start)):
                         childWord = word[:i] + char + word[i+1:]
                         if childWord in dic and childWord not in parents: # 注意这里为什么需要他不在parent里
-                            next_level[childWord].add(word)              # 是因为每一轮只算这一轮的level的next和curr
-            level = next_level                                           # 否则会 TLE
+                            next_level[childWord].add(word)               # 是因为我们要找最短路径
+            level = next_level                                            
             parents.update(next_level)
         # then according parent dictionary, build result from end word to start word
         res = [[end]]
-        print parents
         while res and res[0][0] != start:
-            print res
             res = [ [p] + r for r in res for p in parents[r[0]] ]
         return res
 beginWord = "hit"
