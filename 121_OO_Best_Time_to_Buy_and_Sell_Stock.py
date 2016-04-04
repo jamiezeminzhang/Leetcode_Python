@@ -22,10 +22,7 @@ class Solution(object):
         :rtype: int
         """
         if prices == []: return 0
-        
-        length = len(prices)
-        profit = 0
-        low = 10000000000
+        length, profit, low = len(prices), 0 , 2**31-1
         for i in range(length):
             if prices[i] < low: low = prices[i]
             profit = max( prices[i] - low, profit)
