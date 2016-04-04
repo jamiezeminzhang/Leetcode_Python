@@ -11,7 +11,14 @@ Return [1,3,3,1].
 
 Note:
 Could you optimize your algorithm to use only O(k) extra space?
-Yes of course I can:)
+
+***O(k) extra space solution***
+class Solution(object):
+    def getRow(self, rowIndex):
+        row = [1]
+        for i in range(rowIndex):
+            row = [u+v for u,v in zip(row+[0], [0]+row)]
+        return row
 
 @author: zeminzhang
 """

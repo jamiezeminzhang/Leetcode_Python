@@ -10,6 +10,26 @@ convert it to a height balanced BST.
 
 61%
 
+The solution with O(1) space and O(nlogn) time:
+
+def sortedListToBST(self, head):
+    if not head:
+        return 
+    if not head.next:
+        return TreeNode(head.val)
+    slow, fast = head, head.next.next
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+    # tmp points to root
+    tmp = slow.next
+    # cut down the left child
+    slow.next = None
+    root = TreeNode(tmp.val)
+    root.left = self.sortedListToBST(head)
+    root.right = self.sortedListToBST(tmp.next)
+    return root
+
 @author: zeminzhang
 """
 

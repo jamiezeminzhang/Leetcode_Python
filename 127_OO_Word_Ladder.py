@@ -23,37 +23,6 @@ Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 
-###### My Solution : TLE #######
-
-class Solution(object):
-    def ladderLength(self, beginWord, endWord, wordList):
-        res = []
-        wordList = list(wordList)
-        Solution.min = 100000000
-        def dfs(beginWord, endWord, wordList, resList):
-            for word in wordList:
-                if self.dis2(beginWord, word):
-                    resList.append(word)
-                    if word == endWord: 
-                        if len(resList) < Solution.min:
-                            Solution.min = len(resList)
-                        res.append(resList)
-                        return
-                    tmp = list(wordList)
-                    tmp.remove(word)
-                    dfs(word,endWord,tmp,resList)
-
-        dfs(beginWord, endWord, wordList + [endWord], [])
-        return Solution.min-1
-        
-    def dis2(self, word1, word2):
-        length = len(word1)
-        if length == 0 : return True
-        if length == 1: return True if word1[0] == word2[0] else False
-        for i in range(length):
-            for x in 'qwertyuiopasdfghjklzxcvbnm':
-                if word1[:i] + x + word1[i+1:] == word2: return True
-        return False
 
 Correct one: BFS
 http://chaoren.is-programmer.com/posts/43039.html

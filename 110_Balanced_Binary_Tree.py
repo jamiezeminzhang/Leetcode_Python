@@ -26,24 +26,12 @@ class Solution(object):
         :rtype: bool
         """
         if not root: return True
-        else:
-            if not root.left and not root.right: return True
-            if not root.left and root.right: return True if self.depth(root.right) <= 1 else False
-            if root.left and not root.right: return True if self.depth(root.left) <= 1 else False
-            if root.left and root.right:
-                return self.isBalanced(root.left) and self.isBalanced(root.right) and \
-                abs(self.depth(root.left) - self.depth(root.right)) <= 1
-            
+        else: return self.isBalanced(root.left) and self.isBalanced(root.right) \
+        and abs(self.depth(root.left)-self.depth(root.right))<=1
+    
     def depth(self, root):
         if not root: return 0
-        if not root.left and not root.right:
-            return 1
-        if root.left and not root.right:
-            return self.depth(root.left) + 1
-        if not root.left and root.right:
-            return self.depth(root.right) + 1
-        if root.left and root.right:
-            return 1+max(self.depth(root.left), self.depth(root.right))
+        else: return max(self.depth(root.left), self.depth(root.right))+1
             
         
         
