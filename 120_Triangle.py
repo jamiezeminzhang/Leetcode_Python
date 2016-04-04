@@ -34,13 +34,11 @@ class Solution(object):
         if length == 0: return 0
         if length == 1: return triangle[0][0]
         lis = [triangle[0][0]+triangle[1][0], triangle[0][0]+triangle[1][1]]
-        print lis
         if length == 2: return min(lis)
         for i in range(2,length):
             lis.insert(0,lis[0]+triangle[i][0])
             for j in range(1,i):
                 lis[j] = min(lis[j],lis[j+1]) + triangle[i][j]
             lis[i] = lis[i]+triangle[i][i]
-            print lis
         
         return min(lis)
