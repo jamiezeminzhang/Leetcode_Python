@@ -17,6 +17,21 @@ return 1->3->5->2->4->NULL.
 Note:
 The relative order inside both the even and odd groups should remain as it was in the input. 
 The first node is considered odd, the second node even and so on ...
+
+A more concise solution:
+
+class Solution(object):
+    def oddEvenList(self, head):
+        if not head: return head
+        odd, even, evenhead = head, head.next, head.next
+        while even and even.next:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        odd.next = evenhead
+        return head
+
 @author: Jamie
 """
 
