@@ -44,7 +44,7 @@ class Solution(object):
                 if diff<0:        
                     i = (i+j+1)
                     break
-            if j == length-1: return i
+                if j == length-1: return i
         return -1
 
 sol = Solution()

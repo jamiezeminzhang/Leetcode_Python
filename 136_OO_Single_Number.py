@@ -2,9 +2,10 @@
 """
 Created on Sat Feb  6 08:08:50 2016
 
-136. Single Number My Submissions Question
+136. Single Number
 
 Total Accepted: 112256 Total Submissions: 231990 Difficulty: Medium
+
 Given an array of integers, every element appears twice except for one. 
 Find that single one.
 
@@ -19,6 +20,14 @@ x ^ 0 = x; x ^ x = 0。用在这道题里面就是：y ^ x ^ x = y; x ^ x = 0;
 举个例子：序列为：1122334556677。4是那个唯一的数，之前的数异或操作都清零了，
 之后的数：4 ^ 5 ^ 5 ^ 6 ^ 6 ^ 7 ^ 7 = 4 ^ ( 5 ^ 5 ^ 6 ^ 6 ^ 7 ^ 7 ) = 4 ^ 0 = 4。问题解决。
 
+*** 1 line solution ***
+*** remember these useful functions***
+*** filter, map, reduce ****
+
+class Solution(object):
+    def singleNumber(self, nums):
+        return reduce(lambda x,y:x^y, nums )
+        
 @author: zeminzhang
 """
 

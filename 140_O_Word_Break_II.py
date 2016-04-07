@@ -2,8 +2,9 @@
 """
 Created on Sat Feb  6 10:52:10 2016
 
-140. Word Break II My Submissions Question
+140. Word Break II
 Total Accepted: 50223 Total Submissions: 262887 Difficulty: Hard
+
 Given a string s and a dictionary of words dict, add spaces in s to construct 
 a sentence where each word is a valid dictionary word.
 

@@ -2,8 +2,9 @@
 """
 Created on Sun Feb  7 21:20:35 2016
 
-141. Linked List Cycle My Submissions Question
+141. Linked List Cycle
 Total Accepted: 92028 Total Submissions: 250102 Difficulty: Medium
+
 Given a linked list, determine if it has a cycle in it.
 
 Follow up:

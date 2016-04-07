@@ -2,9 +2,10 @@
 """
 Created on Sat Feb  6 07:25:30 2016
 
-135. Candy My Submissions Question
+135. Candy
 
 Total Accepted: 47521 Total Submissions: 217705 Difficulty: Hard
+
 There are N children standing in a line. Each child is assigned a rating value.
 
 You are giving candies to these children subjected to the following requirements:

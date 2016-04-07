@@ -2,8 +2,9 @@
 """
 Created on Sat Feb  6 09:35:47 2016
 
-139. Word Break My Submissions Question
+139. Word Break
 Total Accepted: 77066 Total Submissions: 315805 Difficulty: Medium
+
 Given a string s and a dictionary of words dict, determine if s can be segmented 
 into a space-separated sequence of one or more dictionary words.
 

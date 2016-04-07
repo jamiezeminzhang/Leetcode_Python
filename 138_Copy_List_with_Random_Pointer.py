@@ -2,8 +2,9 @@
 """
 Created on Sat Feb  6 09:06:49 2016
 
-138. Copy List with Random Pointer My Submissions Question
+138. Copy List with Random Pointer
 Total Accepted: 57632 Total Submissions: 222707 Difficulty: Hard
+
 A linked list is given such that each node contains an additional random pointer 
 which could point to any node in the list or null.
 
