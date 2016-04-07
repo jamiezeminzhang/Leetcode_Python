@@ -2,9 +2,10 @@
 """
 Created on Mon Feb  8 01:27:31 2016
 
-143. Reorder List My Submissions Question
+143. Reorder List
 
 Total Accepted: 58695 Total Submissions: 264365 Difficulty: Medium
+
 Given a singly linked list L: L0→L1→…→Ln-1→Ln,
 reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
 
@@ -13,30 +14,7 @@ You must do this in-place without altering the nodes' values.
 For example,
 Given {1,2,3,4}, reorder it to {1,4,2,3}.
 
-# My solution uses O(n) space and got AC but only beated 3%
-class Solution(object):
-    def reorderList(self, head):
-        if head == None: return None
-        count = 0; lis = []; tmp = head
-        while tmp:
-            lis.append(tmp)
-            tmp = tmp.next
-            count += 1
-        lis.pop(0); count -= 1
-        while lis:
-            head.next = lis.pop()
-            head = head.next
-            count -= 1
-            if count == 0: head.next = None
-            if lis:
-                head.next = lis.pop(0)
-                head = head.next
-                count -= 1
-                if count == 0: head.next = None
-            else:
-                break
 
-Given below a better solution:
 @author: zeminzhang
 """
 # Definition for singly-linked list.

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb  8 01:56:56 2016
-144. Binary Tree Preorder Traversal My Submissions Question
+144. Binary Tree Preorder Traversal 
+
 Total Accepted: 106148 Total Submissions: 274257 Difficulty: Medium
+
 Given a binary tree, return the preorder traversal of its nodes' values.
 
 For example:
@@ -20,15 +22,11 @@ Iterative Solution:
 
 解题思路：如果树为下图：
 
-　　　　　　　　　　　　　　　　　　　　　　1
-
-　　　　　　　　　　　　　　　　　　　　　/     \
-
-　　　　　　　　　　　　　　　　　　　　2         3
-
-　　　　　　　　　　　　　　　　　　　/     \    /    \
-
-　　　　　　　　　　　　　　　　　　 4       5  6     7 
+　　　　　　　　　　　　　　　　　　　　 　1
+　　　　　　　　　　　　　　　　　　　 　 / \
+　　　　　　　　　　　　　　　　　　　　 2    3
+　　　　　　　　　　　　　　　　　　　  / \  / \
+　　　　　　　　　　　　　　　　　　   4  5  6  7 
 
 使用一个栈。步骤为：
 一，先遍历节点1，并入栈，如果有左孩子，继续遍历并入栈，一直到栈为{1，2，4}。

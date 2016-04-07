@@ -2,9 +2,10 @@
 """
 Created on Mon Feb  8 11:20:09 2016
 
-146. LRU Cache My Submissions Question
+146. LRU Cache 
 
 Total Accepted: 62503 Total Submissions: 399108 Difficulty: Hard
+
 Design and implement a data structure for Least Recently Used (LRU) cache. 
 It should support the following operations: get and set.
 
