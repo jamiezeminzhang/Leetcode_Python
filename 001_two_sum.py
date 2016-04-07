@@ -24,3 +24,10 @@ class Solution:
             if e in d:
                 return d[e] + 1, i + 1
             d[target - e] = i
+            
+
+sol = Solution()
+print sol.twoSum([2,5,3,7], 10)
+
+a = {}
+a[2] = 3
