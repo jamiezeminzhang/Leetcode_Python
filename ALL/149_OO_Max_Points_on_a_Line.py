@@ -2,8 +2,10 @@
 """
 Created on Tue Feb  9 07:06:08 2016
 
-149. Max Points on a Line My Submissions Question
+149. Max Points on a Line 
+
 Total Accepted: 52617 Total Submissions: 377309 Difficulty: Hard
+
 Given n points on a 2D plane, find the maximum number of points that lie on 
 the same straight line.
 

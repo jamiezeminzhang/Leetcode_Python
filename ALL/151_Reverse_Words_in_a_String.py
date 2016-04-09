@@ -2,9 +2,10 @@
 """
 Created on Tue Feb  9 09:37:14 2016
 
-151. Reverse Words in a String My Submissions Question
+151. Reverse Words in a String
 
 Total Accepted: 90312 Total Submissions: 580145 Difficulty: Medium
+
 Given an input string, reverse the string word by word.
 
 For example,

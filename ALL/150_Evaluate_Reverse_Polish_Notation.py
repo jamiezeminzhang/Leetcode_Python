@@ -2,9 +2,10 @@
 """
 Created on Tue Feb  9 09:02:55 2016
 
-150. Evaluate Reverse Polish Notation My Submissions Question
+150. Evaluate Reverse Polish Notation
 
 Total Accepted: 59147 Total Submissions: 258553 Difficulty: Medium
+
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 
 Valid operators are +, -, *, /. Each operand may be an integer or another expression.

@@ -2,9 +2,10 @@
 """
 Created on Tue Feb  9 09:52:58 2016
 
-152. Maximum Product Subarray My Submissions Question
+152. Maximum Product Subarray
 
 Total Accepted: 51390 Total Submissions: 239770 Difficulty: Medium
+
 Find the contiguous subarray within an array (containing at least one number)
  which has the largest product.
 
@@ -14,6 +15,9 @@ the contiguous subarray [2,3] has the largest product = 6.
 ****这里的连续指的是index连续 而不是里面的值
 
 解题思路：主要需要考虑负负得正这种情况，比如之前的最小值是一个负数，再乘以一个负数就有可能成为一个很大的正数。
+
+最巧妙的点在于每次循环过程中把当前值c也考虑在内。如果之前最大或者最小都没有c好，则用c取代之，意味着新的subarray从c开始。
+
 @author: zeminzhang
 """
 
