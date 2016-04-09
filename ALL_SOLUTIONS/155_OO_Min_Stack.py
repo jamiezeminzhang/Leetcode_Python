@@ -12,6 +12,9 @@ pop() -- Removes the element on top of the stack.
 top() -- Get the top element.
 getMin() -- Retrieve the minimum element in the stack.
 
+每次存储的是一个tuple: (x, curMin)
+想法很简单，但是非常巧妙
+
 @author: zeminzhang
 """
 
@@ -20,37 +23,35 @@ class MinStack(object):
         """
         initialize your data structure here.
         """
-        self.stack1 = [] # normal stack
-        self.stack2 = [] # for retrieving min
+        self.stack = []
 
     def push(self, x):
         """
         :type x: int
         :rtype: nothing
         """
-        self.stack1.append(x)
-        if (not self.stack2) or (x<=self.stack2[-1]):
-            self.stack2.append(x)
-        
+        curMin = self.getMin()
+        if curMin==None or x<curMin: curMin = x
+        self.stack.append((x,curMin))
 
     def pop(self):
         """
         :rtype: nothing
         """
-        value1 = self.stack1.pop()
-        if value1 == self.stack2[-1]:
-            self.stack2.pop()
+        self.stack.pop()
         
 
     def top(self):
         """
         :rtype: int
         """
-        return self.stack1[-1]
+        if self.stack: return self.stack[-1][0]
+        else: return None
 
     def getMin(self):
         """
         :rtype: int
         """
-        return self.stack2[-1]
+        if self.stack: return self.stack[-1][1]
+        else: return None
         
