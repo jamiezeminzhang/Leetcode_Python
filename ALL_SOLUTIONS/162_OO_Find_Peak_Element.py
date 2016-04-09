@@ -17,8 +17,14 @@ For example, in array [1, 2, 3, 1], 3 is a peak element and your function should
 
 click to show spoilers.
 
+Note:
+Your solution should be in logarithmic complexity.
+
 Credits:
 Special thanks to @ts for adding this problem and creating all test cases.
+
+
+*** This problem is equivalent to finding a local maximum via binary search***
 
 @author: Jamie
 """
@@ -29,20 +35,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        length = len(nums)
-        if length == 1: return 0
-        if length == 2: 
-            if nums[0]< nums[1]: return 1
-            if nums[0]> nums[1]: return 0
-
-        i = 0
-        while i< length:
-            if i == 0: 
-                if nums[i]>nums[i+1]: return i
-            elif i == length-1:
-                if nums[i]>nums[i-1]: return i
-            elif nums[i] > nums[i-1] and nums[i] > nums[i+1]:
-                return i
-            i+= 1
+        return self.helper(nums,0,len(nums)-1)
+        
+    def helper(self, nums, left, right):
+        if left==right: return left
+        mid1 = (left+right)/2; mid2 = mid1+1
+        if nums[mid1]>nums[mid2]: return self.helper(nums,left, mid1)
+        else: return self.helper(nums,mid2,right)
         
         
