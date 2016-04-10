@@ -2,8 +2,10 @@
 """
 Created on Sun Feb 14 09:40:32 2016
 
-171. Excel Sheet Column Number My Submissions Question
+171. Excel Sheet Column Number 
+
 Total Accepted: 64630 Total Submissions: 160845 Difficulty: Easy
+
 Related to question Excel Sheet Column Title
 
 Given a column title as appear in an Excel sheet, return its corresponding column number.
