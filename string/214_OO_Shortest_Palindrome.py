@@ -5,7 +5,6 @@ Created on Thu Feb 18 14:37:40 2016
 214. Shortest Palindrome My Submissions Question
 
 Total Accepted: 16240 Total Submissions: 85929 Difficulty: Hard
-
 Given a string S, you are allowed to convert it to a palindrome by adding characters in front of it. 
 Find and return the shortest palindrome you can find by performing this transformation.
 
