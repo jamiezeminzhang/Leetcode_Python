@@ -2,9 +2,10 @@
 """
 Created on Fri Feb 19 17:22:00 2016
 
-228. Summary Ranges My Submissions Question
+228. Summary Ranges
 
 Total Accepted: 37795 Total Submissions: 163553 Difficulty: Easy
+
 Given a sorted integer array without duplicates, return the summary of its ranges.
 
 For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].

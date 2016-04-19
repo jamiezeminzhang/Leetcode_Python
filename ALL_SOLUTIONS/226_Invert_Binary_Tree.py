@@ -2,8 +2,10 @@
 """
 Created on Fri Feb 19 16:19:33 2016
 
-226. Invert Binary Tree My Submissions Question
+226. Invert Binary Tree
+
 Total Accepted: 69873 Total Submissions: 159633 Difficulty: Easy
+
 Invert a binary tree.
 
      4
