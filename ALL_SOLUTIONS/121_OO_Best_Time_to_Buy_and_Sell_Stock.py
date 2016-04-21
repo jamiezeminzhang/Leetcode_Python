@@ -2,8 +2,10 @@
 """
 Created on Wed Feb  3 22:59:20 2016
 
-121. Best Time to Buy and Sell Stock My Submissions Question
+121. Best Time to Buy and Sell Stock
+
 Total Accepted: 84382 Total Submissions: 240817 Difficulty: Medium
+
 Say you have an array for which the ith element is the price of a given stock on day i.
 
 If you were only permitted to complete at most one transaction (ie, buy one 

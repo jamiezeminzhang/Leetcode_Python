@@ -2,9 +2,10 @@
 """
 Created on Thu Feb  4 02:18:28 2016
 
-122. Best Time to Buy and Sell Stock II My Submissions Question
+122. Best Time to Buy and Sell Stock II
 
 Total Accepted: 75829 Total Submissions: 184238 Difficulty: Medium
+
 Say you have an array for which the ith element is the price of a given stock on day i.
 
 Design an algorithm to find the maximum profit. You may complete as many 

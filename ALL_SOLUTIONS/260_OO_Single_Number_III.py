@@ -2,9 +2,10 @@
 """
 Created on Sun Feb 21 11:31:10 2016
 
-260. Single Number III My Submissions Question
+260. Single Number III
 
 Total Accepted: 25439 Total Submissions: 59645 Difficulty: Medium
+
 Given an array of numbers nums, in which exactly two elements appear only once and all the other 
 elements appear exactly twice. Find the two elements that appear only once.
 
