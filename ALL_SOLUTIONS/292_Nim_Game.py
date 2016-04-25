@@ -30,5 +30,4 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        dp = [False, True, True, True]
-        return dp[n%4]
+        return [False, True, True, True][n%4]
