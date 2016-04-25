@@ -2,9 +2,10 @@
 """
 Created on Mon Feb 22 18:41:39 2016
 
-295. Find Median from Data Stream My Submissions Question
+295. Find Median from Data Stream
 
 Total Accepted: 11092 Total Submissions: 51886 Difficulty: Hard
+
 Median is the middle value in an ordered integer list. If the size of the list is even, 
 there is no middle value. So the median is the mean of the two middle value.
 

@@ -2,8 +2,10 @@
 """
 Created on Mon Feb 22 17:21:47 2016
 
-290. Word Pattern My Submissions Question
+290. Word Pattern
+
 Total Accepted: 26375 Total Submissions: 93875 Difficulty: Easy
+
 Given a pattern and a string str, find if str follows the same pattern.
 
 Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
@@ -15,6 +17,13 @@ pattern = "aaaa", str = "dog cat cat dog" should return false.
 pattern = "abba", str = "dog dog dog dog" should return false.
 Notes:
 You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
+
+A much shorter solution which uses exactly the same idea:
+
+def wordPattern(self, pattern, str):
+    s = pattern
+    t = str.split()
+    return map(s.find, s) == map(t.index, t)
 
 @author: Jamie
 """
