@@ -30,16 +30,13 @@ class Solution(object):
         :type primes: List[int]
         :rtype: int
         """
-        length = len(primes)
-        q = [1]
-        idx = [0 for x in range(length)]
-        
+        q=[1]
+        idx = [0 for x in range(len(primes))]
         
         while len(q)<n:
-            tmp = [ primes[i] * q[idx[i]] for i in range(length) ]
-            m = min(tmp)
-            for i in range(len(tmp)):
-                if tmp[i] == m: idx[i] += 1
+            m = min( [primes[i]*q[idx[i]] for i in range(len(primes))] )
+            for i in range(len(primes)):
+                if m == primes[i]*q[idx[i]]:
+                    idx[i] += 1   # can't add a 'break' after this line since there may be multiple minimums.
             q.append(m)
-        #print q
         return q[-1]

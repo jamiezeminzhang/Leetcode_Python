@@ -145,7 +145,7 @@ class Solution(object):
         for idx, item in enumerate(unique_and_sorted_num):
             dic[item] = idx+1
         new_num = [dic[item] for item in nums]
-        ft = FenwickTree(len(new_num))
+        ft = FenwickTree(len(unique_and_sorted_num))
         ans = [0] * len(new_num)
         for i in range(len(new_num)-1,-1,-1):
             ans[i] = ft.sum(new_num[i]-1)
