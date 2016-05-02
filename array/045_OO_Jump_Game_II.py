@@ -22,6 +22,21 @@ index 0 to 1, then 3 steps to the last index.)
 Note:
 You can assume that you can always reach the last index.
 
+我的算法超时，用的dp的思路
+class Solution(object):
+    def jump(self, nums):
+        MAX_val = 2**31-1
+        length = len(nums)
+        if nums[0] == 0: return MAX_val
+        first = nums[0]
+        result = MAX_val
+        if first >= length-1:
+            return 1
+        else:
+            for i in range(1,first+1):
+                result = min(result, 1 + self.jump(nums[i:]))
+        
+        return result
 
 @author: zeminzhang
 """

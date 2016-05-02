@@ -2,6 +2,10 @@
 """
 Created on Wed Jan 13 22:09:01 2016
 
+40. Combination Sum II 
+
+Total Accepted: 67636 Total Submissions: 245209 Difficulty: Medium
+
 Given a collection of candidate numbers (C) and a target number (T), find all 
 unique combinations in C where the candidate numbers sums to T.
 
@@ -23,29 +27,21 @@ A solution set is:
 """
 
 class Solution(object):
-    def DFS(self, candidates, target , start, val_list,sol):
-        if target == 0:
-            if val_list not in sol:
-                return sol.append(val_list)
-            else:
-                return sol
-        else:
-            for i in range(start, len(candidates)):
-                tmp = candidates[i]
-                if tmp > target:
-                    return
-                self.DFS(candidates, target - tmp, i+1 , val_list+[tmp],sol)
-        
     def combinationSum2(self, candidates, target):
         """
         :type candidates: List[int]
         :type target: int
         :rtype: List[List[int]]
         """
+        def dfs(start, target, valuelist):
+            if target == 0:
+                if valuelist not in res: res.append(valuelist)
+                return
+            for idx in range(start, len(candidates)):
+                if target<candidates[idx]: return
+                dfs(idx+1, target-candidates[idx], valuelist+[candidates[idx]])
+                
         candidates.sort()
-        sol = []
-        self.DFS(candidates,target,0,[],sol)
-        return sol
-
-a = Solution()
-print a.combinationSum2([10,1,2,7,6,1,5],8)
+        res = []
+        dfs(0, target, [])
+        return res
