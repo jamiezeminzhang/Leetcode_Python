@@ -2,6 +2,11 @@
 """
 Created on Fri Jan 15 11:38:11 2016
 
+47. Permutations II
+
+Total Accepted: 71489 Total Submissions: 253924 Difficulty: Medium
+
+
 Given a collection of numbers that might contain duplicates,
 return all possible unique permutations.
 
