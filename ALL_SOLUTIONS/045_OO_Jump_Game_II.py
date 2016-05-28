@@ -26,22 +26,20 @@ You can assume that you can always reach the last index.
 @author: zeminzhang
 """
 # We use "last" to keep track of the maximum distance that has been reached
-# by using the minimum steps "ret", whereas "curr" is the maximum distance
-# that can be reached by using "ret+1" steps. Thus,curr = max(i+A[i]) where 0 <= i <= last.
+# by using the minimum steps "steps", whereas "curr" is the maximum distance
+# that can be reached by using "steps+1" steps. Thus,curr = max(i+A[i]) where 0 <= i <= last.
 class Solution(object):
-    def jump(self, A):    
-        ret = 0
-        last = 0
-        curr = 0
-        for i in range(len(A)):
-            if i > last:
+    def jump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        steps, last, curr = 0, 0, 0
+        for i in range(len(nums)):
+            if i>last:
                 last = curr
-                ret += 1
-            curr = max(curr, i+A[i])
-        return ret
-
-sol = Solution()
-print sol.jump([5,6,5,3,9,8,3,1,2,8,2,4,8,3,9,1,0,9,4,6,5,9,8,7,4,2,1,0,2])            
-            
-            
+                steps += 1
+            curr = max(curr, i+nums[i])
+        return steps
+                       
             

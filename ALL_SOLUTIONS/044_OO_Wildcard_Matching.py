@@ -57,16 +57,16 @@ class Solution(object):
         :type p: str
         :rtype: bool
 		
-		dp[n] means the whether substring s[:n] matches the pattern until i
+	dp[n] means the whether substring s[:n] matches the pattern until i
         dp[0] means the empty string '' or s[:0] which only match the pattern '*'
         use the reversed builtin because for every dp[n+1] we use the previous 'dp'
-		每一次dp用的都是上一轮dp的结果
-		逆序那里的考虑是：每次都从s的最后一个字符开始考虑匹配。对于现在的字符i，如果s最后一个字符与i匹配，
-		并且上一次dp的结果与i的上一个字符匹配，那么现在的结果就匹配。
+	每一次dp用的都是上一轮dp的结果
+	逆序那里的考虑是：每次都从s的最后一个字符开始考虑匹配。对于现在的字符i，如果s最后一个字符与i匹配，
+	并且上一次dp的结果与i的上一个字符匹配，那么现在的结果就匹配。
 		
-		如果i是*，那么从dp的任何一个true开始，后面统统都是true。
+	如果i是*，那么从dp的任何一个true开始，后面统统都是true。
         
-		"""
+	"""
         length = len(s)
         dp = [True]+[False for x in range(length)]
         for i in p:
