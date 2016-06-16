@@ -2,6 +2,10 @@
 """
 Created on Wed Jan 27 03:46:59 2016
 
+67. Add Binary
+
+Total Accepted: 88158 Total Submissions: 315793 Difficulty: Easy
+
 Given two binary strings, return their sum (also a binary string).
 
 For example,
