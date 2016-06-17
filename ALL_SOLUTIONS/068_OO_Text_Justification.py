@@ -2,6 +2,10 @@
 """
 Created on Wed Jan 27 04:28:53 2016
 
+68. Text Justification
+
+Total Accepted: 34873 Total Submissions: 212254 Difficulty: Hard
+
 Given an array of words and a length L, format the text such that each line has
  exactly L characters and is fully (left and right) justified.
 
