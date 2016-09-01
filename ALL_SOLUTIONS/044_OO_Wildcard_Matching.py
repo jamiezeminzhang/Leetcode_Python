@@ -33,19 +33,22 @@ isMatch("aab", "c*a*b") → false
 附上2维DP TLE的代码
 class Solution(object):
     def isMatch(self, s, p):
-        dp = [ [False for x in range(len(p)+1)] for y in range(len(s)+1) ]
+        ls, lp = len(s), len(p)
+        dp = [[False for _ in range(lp+1)] for _ in range(ls+1)]
         dp[0][0] = True
+        for i in range(1,lp+1):
+            dp[0][i] = dp[0][i-1] and p[i-1]=='*'
         
-        for i in range(1,len(s)+1):
-            for j in range(1,len(p)+1):
-                if p[j-1] == '?' or p[j-1] == s[i-1]:
+        for i in range(1,ls+1):
+            for j in range(1,lp+1):
+                if p[j-1]=='?':
                     dp[i][j] = dp[i-1][j-1]
-                elif p[j-1] == '*':
-                    for k in range(j,-1,-1):
-                        if dp[i-1][k] == True:
-                            dp[i][j] = True
-                            break
-        return dp[len(s)][len(p)]
+                elif p[j-1]=='*':
+                    dp[i][j] = dp[i][j-1] or dp[i-1][j]
+                else:
+                    dp[i][j] = dp[i-1][j-1] and s[i-1]==p[j-1]
+        return dp[-1][-1]
+                
 
 @author: zeminzhang
 """
