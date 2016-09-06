@@ -26,6 +26,31 @@ Example 2:
 00011
 Answer: 3
 
+*** BFS ***
+
+class Solution(object):
+    def numIslands(self, grid):
+        if not grid: return 0
+        m, n = len(grid), len(grid[0])
+        ans = 0
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == '1':
+                    ans += 1
+                    grid[i][j] = '#'
+                    queue = collections.deque()
+                    queue.append((i, j))
+                    while queue:
+                        x, y = queue.popleft()
+                        for dx, dy in zip([0,1,0,-1],[1,0,-1,0]):
+                            nx, ny = x+dx, y+dy
+                            if nx>=0 and nx<m and ny>=0 and ny<n and grid[nx][ny]=='1':
+                                grid[nx][ny]='#'
+                                queue.append((nx,ny))
+        return ans
+                    
+
 @author: Jamie
 """
 
