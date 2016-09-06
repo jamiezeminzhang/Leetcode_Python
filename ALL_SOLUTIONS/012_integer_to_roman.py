@@ -29,41 +29,14 @@ class Solution:
 
 """
 
-class Solution:
-    # @param {integer} num
-    # @return {string}
+class Solution(object):
     def intToRoman(self, num):
-        D = {}
-        num_str = str(num)
-        D[0] = ""
-        D[1] = "I" ; D[2] = "II" ; D[3] = "III" ; D[4] = "IV" ; D[5] =  "V"
-        D[6] = "VI"; D[7] = "VII"; D[8] = "VIII"; D[9] = "IX"
-        D[10] = "X"; D[50] = "L" ; D[100] = "C" ; D[500] = "D"; D[1000] = "M"
-        
-        if num>=11 and num<= 39:
-            return int(num_str[0])*D[10] + D[int(num_str[1])]
-        if num>=40 and num <=49:
-            return "XL" + D[int(num_str[1])]
-        if num >=51 and num<=89:
-            return  D[50] + self.intToRoman(num-50)
-        if num >=90 and num <= 99:
-            return "XC" + D[int(num_str[1])]
-        if num >= 101 and num <=399:
-            return int(num_str[0])*D[100] + self.intToRoman(int(num_str[1:]))
-        if num >=400 and num <= 499:
-            return "CD" + self.intToRoman(num-400)
-        if num >= 501 and num <= 899:
-            return D[500] + self.intToRoman(num-500)
-        if num >= 900 and num <= 999:
-            return "CM" + self.intToRoman(num-900)
-        if num >= 1001:
-            return int(num_str[0])*D[1000] + self.intToRoman(int(num_str[1:]))
-        
-        return D[num]
-        
-        
-        
-        
-sol = Solution()
-
-print sol.intToRoman(900)
+        """
+        :type num: int
+        :rtype: str
+        """
+        M = ['','M','MM','MMM']
+        C = ['','C','CC','CCC','CD','D','DC','DCC','DCCC','CM']
+        X = ['','X','XX','XXX','XL','L','LX','LXX','LXXX','XC']
+        I = ['','I','II','III','IV','V','VI','VII','VIII','IX']
+        return M[num/1000]+C[(num%1000)/100]+X[(num%100)/10]+I[num%10]
